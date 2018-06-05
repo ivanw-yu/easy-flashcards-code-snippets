@@ -1,0 +1,43 @@
+<div class = "img-area">
+    <div class = "img-area-content">  
+      <h1>Easy-Flashcards</h1>
+      <p>Make, search and study flashcards the easy way</p>
+      <p  *ngIf = "!authService.loggedIn()" > <button (click) = "openRegistration = true" class = "orange-button">Register</button> | <button (click) = "openLogin = true" class = "orange-button"> Login </button></p>
+    </div>
+    <div class = "img-area-mask"></div>
+  </div>
+  <div class = "features-area">
+    <div class = "col-md-4 homeparts">
+      <div class = "col-content">
+      <span class = "glyphicon glyphicon-move"></span>
+      <h1>Navigation Controls</h1>
+      <p> Arrow key commands, view options and card finder - implemented to ease navigation of flashcards.</p>
+      <video class = "home-page-video"  height = "200"src="../../../assets/videos/easyflashcardsnavigation2.mov" type="video/mov">
+      </video>
+      </div>
+    </div> 
+    <div style= "min-height: 600px">
+    <div class = "col-md-4 homeparts">
+        <div class = "col-content">
+            <span class = "glyphicon glyphicon-user"></span>
+            <h1>Account Features</h1>
+            <p>Save flashcards on your watchlist, or create/edit your own decks using your account.</p>
+            <video class = "home-page-video" height = "200"src="../../../assets/videos/easyflashcardwatchlist2.mov" type="video/mov">
+          </video>
+      </div>
+    </div> 
+    <div class = "col-md-4 homeparts">
+      <div class = "col-content">
+        <span class = "glyphicon glyphicon-screenshot"></span>
+        <h1>Card Searching</h1>
+        <p>Simple search functionalities lets you find cards based on titles, subjects or contents. </p>
+        <video class = "home-page-video"  height = "200"src="../../../assets/videos/easyflashcardssearch2.mov" type="video/mov">
+        </video> 
+      </div>
+    </div>
+  </div>
+  </div>
+  <br>
+  <br>
+  <app-login *ngIf = "!authService.loggedIn() && openLogin" [(show)] = "openLogin" (cancelRequest) = "openLogin = false;"></app-login>
+  <app-register *ngIf = "!authService.loggedIn() && openRegistration" [(show)] = "openRegistration" (cancelRequest) = "openRegistration = false;"></app-register>

@@ -1,0 +1,73 @@
+<div class = "deck-page-header">
+    <div class = "settings">
+            <table>
+              <tr>
+                <th>
+                  <span class = "glyphicon glyphicon-cog"></span>
+                </th>
+                <th class = "table-label">
+                  <u> View Setting </u>
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <input id ="singleViewType" name = "singleView" type = "checkbox" (click) = "changeViewType('single')" [checked] = "viewType == 'single'">
+                </td>
+                <td class = "table-label"> 
+                  Single
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input id ="doubleViewType" name = "doubleView" type = "checkbox" (click) = "changeViewType('double')" [checked] = "viewType == 'double'">
+                </td>
+                <td class = "table-label">
+                  Double
+                </td>
+              </tr>
+            </table>
+    </div>
+    <div class = "commands">
+      <table>
+        <tr>
+          <th><span class= "glyphicon glyphicon-wrench"></span></th>
+          <th><u> Arrow-Key Commands</u></th>
+        </tr>
+        <tr>
+          <td><span class = "glyphicon glyphicon-arrow-left"></span> </td>
+          <td> Previous card </td>
+        </tr>
+        <tr>
+          <td><span class = "glyphicon glyphicon-arrow-right"></span> </td>
+          <td> Next card </td>
+        </tr>
+        <tr>
+          <td><span class = "glyphicon glyphicon-arrow-down"></span> </td>
+          <td> Change view </td>
+        </tr>
+        <tr>
+          <td><span class = "glyphicon glyphicon-arrow-up"></span></td>
+          <td> Flip card (Single View) </td>
+        </tr>
+      </table>
+    </div>
+    <div class = "deck-info">
+      <p *ngIf = "title" id = "deckTitle"> Title: {{title}}</p>
+      <p *ngIf = "subject">Subject: {{subject}} </p>
+      <p *ngIf = "!subject">Subject: N/A</p>
+      <p *ngIf = "username"> Author: {{username}} </p>
+    </div>
+</div>
+
+<div class = "container-fluid flashcard-and-sidenav-div">
+  <div class = "flashcard-and-sidenav-area">
+
+  <!-- centerFlashcard is set to true when window is <=600 width. In such event, the setBottom input field of the flashcard nav is set to true, setting it to the bottom of the page -->
+  <app-deck-side-nav *ngIf = "flashcards" [flashcards] = "flashcards" [(selectedIndex)] = "selectedCard" (displayNewCard) = "selectNewCard($event);" (enableCommandsRequest) = "reconnectCommands()"></app-deck-side-nav>
+          <div *ngIf = "flashcards" class = "flashcard-view">
+          <button class = "left-button" (click) = "nextLeftCard()"> <span class = "glyphicon glyphicon-triangle-left"></span></button>
+          <button class = "right-button" (click) = "nextRightCard()"> <span class = "glyphicon glyphicon-triangle-right"></span></button>
+          <app-flashcard [flashcard] = "flashcards[selectedCard]" [(viewType)] = "viewType" (viewChangeRequest) = "viewType = $event" [(displayType)] = "face" ></app-flashcard>
+      </div> 
+  </div>
+</div>

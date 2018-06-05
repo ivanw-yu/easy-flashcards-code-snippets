@@ -1,0 +1,66 @@
+<div *ngIf = "decks">
+  <div class = "search-result-summary"> <i>{{ (noMatch) ? 'No results were found using the provided keyword(s). Here are some available decks.' : ((decks.length==1) ? ' 1 deck' : ' ' + decks.length + ' decks') + ' found for search keyword' + ((keywords.length==1) ? ' \'' + keywords.join(" ") + '\'' : 's \'' + keywords.join(" ") + '\'') }} </i> </div>
+  
+  
+  <div class = "row-fluid search-background">
+    <span id = "sort-by-area">
+        Sort By:
+        <select id = "sort-options" [(ngModel)] = "sortVal" (change) = "sort()"required>
+          <option value = "date-desc" [ngValue] = "date-desc"> Newest-Oldest </option>            <option value = "date-asc" [ngValue] = "date-asc"> Oldest-Newest </option>
+          <option value = "title-desc" [ngValue] = "title-desc"> A-Z </option>
+          <option value = "title-asc" [ngValue] = "title-asc"> Z-A</option>
+          <option value = "view-desc" [ngValue] = "view-desc"> Most Views First </option>
+          <option value = "view-asc" [ngValue] = "view-asc"> Least Views First </option>
+        </select>
+    </span>
+    <div *ngFor = "let deck of decks; let i = index;" style = "position: relative">
+      <div [ngClass] = "getCardClass(i)"  clickable>
+        <ng-container *ngIf = "toShow(i)">
+          <div class = "summary-area" [routerLink] = "['/deck', deck._id]" clickable>
+            <h1 class = "title-part"> {{deck.title}} </h1>
+            <p> Subject: {{deck.subject ? deck.subject : 'N/A'}}, {{deck.flashcards.length}} cards </p>
+            <p> User: {{deck.username}}</p>
+            <p *ngIf = "getKeywords(i).length">
+              Contains keywords: <mark>   {{getKeywords(i).join(', ')}} </mark>
+            </p>
+            <p> Published {{timeHelper.getLocalTime(deck.created)}} </p>
+            <p *ngIf = "deck.lastModified">Edited {{timeHelper.getLocalTime(deck.lastModified)}}</p>
+            <p> {{(deck.views && deck.views!=0) ? 
+                  ((deck.views > 1) ? 
+                      deck.views + " views" 
+                      : deck.views + " view") 
+                  : "No views"}} </p>
+            <p *ngIf = "!getKeywords(i).length"><br></p>
+            <p *ngIf = "deck.lastModified == undefined"><br></p>
+            <button [routerLink] = "['/deck', deck._id]" class = "btn btn-primary btn-small view-button"> View </button>
+          </div>
+
+          <ng-container [ngSwitch] = "this.authService.loggedIn()">
+            <ng-container *ngSwitchCase = "true" [ngSwitch] = "containsInWatchList(deck._id)">
+              <div *ngSwitchCase = "false" class ="glyphicon glyphicon-plus add-sign" (click) = "addToWatchList(deck._id, deck.title)" >
+                <div class = "tooltip">
+                  Add to watchlist.
+                </div>
+              </div>
+              <div *ngSwitchCase = "true" class ="glyphicon glyphicon-remove add-sign" (click) = "removeFromWatchList(deck._id, deck.title)" >
+                <div class = "tooltip">
+                  Remove from watchlist.
+                </div>
+              </div>
+            </ng-container>
+            <div *ngSwitchCase = "false" class ="glyphicon glyphicon-plus add-sign" (click) = "openLogin = !openLogin" >
+                <div class = "tooltip">
+                  Please log in to add this deck to your watchlist.
+                </div>
+              </div>
+          </ng-container>
+        </ng-container>
+    </div>
+    </div>
+    <div>
+      <button *ngIf = "numToShow < flashcards.length" class = "show-more-button" (click) = "showMore()"> Show More </button>
+    </div>
+  </div>
+</div>
+<app-login *ngIf = "!authService.loggedIn() && openLogin" [(show)] = "openLogin" (cancelRequest) = "openLogin = false;"></app-login>
+<div id = "add-remove-message">{{addOrRemoveMessage}}</div>

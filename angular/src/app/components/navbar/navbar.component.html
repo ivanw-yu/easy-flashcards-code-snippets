@@ -1,0 +1,43 @@
+<nav id = "navbar-id-for-height-compare" class = "nav navbar-inverse navbar-fixed-top"> <!--style = "position : fixed; width: 100%; top: 0; z-index: 10">-->
+  <div class="container-fluid">
+        <div class="navbar-header">
+          <button (click) = "dropdownSwitch()" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Easy-Flashcards</a>
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact : true}"><a [routerLink] = "['/']"> Home </a></li>
+          </ul>
+          <div class="col-sm-6 col-md-6 area-for-search">
+          <form class="navbar-form navbar-input-group" role="search" style = "width: 100%; text-align: center">
+            <div class="input-group">
+              <input id = "searchBar" type = "text" name = "keywords" [(ngModel)] = "keywords" class = "form-control" placeholder="Search Flashcards.." style = "width: 100%">
+                <div class="input-group-btn">
+                    <button class="btn btn-default search-button" (click) = "searchCards()"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+          </form>
+        </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li id = "register" *ngIf = "!loggedIn()" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact: true}">
+                <a (click) = "openRegistrationForm()">Register</a></li>
+            <li id = "login" *ngIf = "!loggedIn()" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact: true}">
+                <a (click) = "openLoginForm()">Login</a>
+            </li>
+            <li *ngIf = "loggedIn()" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact: true}"><a [routerLink] = "['/profile']">Profile </a></li>
+            <li *ngIf = "loggedIn()" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact: true}"><a [routerLink] = "['/dashboard']">Dashboard </a></li>
+            <li *ngIf = "loggedIn()" > <a (click) = "onLogout()" href = "#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div *ngIf = "loggedIn()" [ngClass] = "{'navbar-and-dropdown-space-div': dropdownOpen, 'navbar-space-div': !dropdownOpen}"></div>
+    <div *ngIf = "!loggedIn()" [ngClass] = "{'navbar-and-dropdown-not-logged-in-space-div': dropdownOpen, 'navbar-space-div-not-logged-in': !dropdownOpen}"></div>
+    <app-register *ngIf = "!loggedIn() && openRegistration" [(show)] = "openRegistration" (cancelRequest) = "openRegistration = false"></app-register>
+    <app-login *ngIf = "!loggedIn() && openLogin" [(show)] = "openLogin" (cancelRequest) = "openLogin = false;"></app-login>

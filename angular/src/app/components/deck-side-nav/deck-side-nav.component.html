@@ -1,0 +1,29 @@
+<div class = "header-and-switch">
+   <span class = "search-deck-area">
+     <input type = "text" id = "deckSearcher" (keydown) = "searchMessage = ''" (focus) = "disconnectCommands()" (focusout) = "reconnectCommands()" placeholder = "Find a card.." #deckSearchKeyword>
+     <span class = "glyphicon glyphicon-search" (click) = "searchDeck(deckSearchKeyword.value)"></span>
+    </span>
+    <p class = "showAnswerSwitch"> Show Answers <input type = "checkbox" (click) = "clickAnswerSwitch()"></p>
+    <p id = "deckSearchMessage"> {{searchMessage ? searchMessage : ""}}
+      <span *ngIf = "searchMessage && searchMessage.length && searchMessage != 'No match found'" class = "glyphicon glyphicon-triangle-left prevSearchResult" (click) = "nextSearchResult()"></span>
+      <span *ngIf = "searchMessage && searchMessage.length && searchMessage != 'No match found'" class = "glyphicon glyphicon-triangle-right nextSearchResult" (click) = "prevSearchResult()"></span>
+    </p>
+</div>
+<ul *ngIf = "flashcards" class = "flashcards-side-nav">
+  <br>
+  <li *ngFor = "let flashcard of flashcards; let i = index"
+      [ngClass] = '{ "selected-flashcard" :  "i == selectedCard"}'
+      id = {{i}}
+      clickable>
+    <div *ngIf = "editMode" class = "edit-delete-frame">
+      <a (click) = "edit(i)"> Edit </a>
+      <a (click) = "delete(i)"> Delete </a>
+    </div>
+        <button [ngClass] = '{ "selected-flashcard" : isSelected(i)}' (click) = "onDisplayCard(i)" style = "position: relative; width: 100%; height: 100%">
+      <br>
+      Question : {{flashcard.question}} <br>
+      <p *ngIf = "showAnswers"> Answer : {{flashcard.answer}} </p>
+      <p *ngIf = "!showAnswers"> <br> </p>
+    </button>
+  </li>
+</ul>

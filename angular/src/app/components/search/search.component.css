@@ -1,0 +1,190 @@
+.deck-summary{
+    border: .01% solid #f2f2f2;
+    padding:0;
+    width: 25%;
+    height: 80%;
+    margin: 2.5%;
+    background-color:white;
+    box-shadow: 5px 5px #d9d9d9;
+    line-height: 90%;
+    vertical-align: top;
+}
+
+/* summary-area is used for hovering and clicking effects because child element hovered (add-to-watchlist button) will
+    trigger parent element hover and click effects (deck-summary)*/
+.summary-area{
+    margin: 0;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    padding-top: 10%;
+
+}
+
+.summary-area:hover {
+    background-color: rgba(161, 161, 161, 0.5);
+    opacity: .5;
+    cursor: pointer;
+}
+
+.title-part{
+    position: relative;
+    width: 75%;
+    left: 12.5%;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 0;
+    text-align: center;
+    font-size: 125%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.middle-card {
+    margin-left: 3.125%;
+    margin-right: 3.125%;
+}
+
+.left-card {
+    margin-left: 6.25%;
+    margin-right: 3.125%;
+}
+
+.right-card {
+    margin-left: 3.125%;
+    margin-right: 6.25%;
+}
+
+.search-background{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #e6e6e6;
+    text-align: center;
+    overflow: auto;
+    padding-top: 50px;
+}
+
+.show-more-button {
+
+    margin: auto;
+    left: 12.5%;
+    width: 75%;
+    margin-bottom: 2.5%;
+}
+
+mark{
+    padding-top: 0;
+    padding-bottom: 0;
+    word-wrap: break-word;
+    line-height: 100%;
+}
+
+#sort-by-area{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.search-result-summary{
+    position: relative;
+    left: 2.5%;
+    font-size: 120%;
+    word-wrap: break-word;
+    padding-top: 35px;
+}
+
+.add-sign{
+    position: absolute;
+    display: inline-block;
+    right: 1%;
+    top: 1%;
+    color: #d9d9d9;
+    background-color:#f2f2f2;
+    width: 10%;
+    height: 10%;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.add-sign:hover {
+    color: #f2f2f2;
+    cursor: pointer;
+    background-color:rgba(242, 242, 242, 0.39);
+}
+
+/* Tooltip text */
+.add-sign .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    z-index: 1;
+    margin-left: -60px;
+    transition: opacity 1s;
+}
+
+.add-sign .tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.add-sign:hover .tooltip {
+    visibility: visible;
+    background-color: black;
+    opacity: 1;
+}
+
+#add-remove-message{
+    position: fixed;
+    z-index: 99;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+.view-button{
+    position: relative;
+    width: 40%;
+    margin: auto;
+    text-align:center;
+    word-wrap: break-word;
+    top: 0;
+    background-color: orange;
+    border: 1px solid orange;
+}
+
+/* for smaller screens, only 2 decks per row*/
+@media only screen and (max-width: 500px) {
+    .left-card, .right-card {
+        margin-left: 6.25%;
+        margin-right: 3.125%;
+    }
+
+    .middle-card {
+        margin-left: 3.125%;
+        margin-right: 6.25%;
+    }
+
+    .deck-summary {
+        width: 40%;
+    }
+}

@@ -1,0 +1,190 @@
+li button {
+    white-space: normal;
+}
+
+#side-nav-header{
+   text-align: center; 
+   padding: 5%;
+}
+
+#bottom-nav-header{
+    text-align: center; 
+    padding: 0;
+ }
+
+
+li {
+    margin : 5% 5%;
+}
+
+
+button.selected-flashcard {
+    border: 2px solid orange;
+    background-color: "grey";
+}
+
+button.selected-flashcard:focus {
+    outline: none; /* removes the blue outline around focused element*/
+}
+
+button{
+    word-wrap: break-word;
+}
+
+.edit-delete-frame{
+    text-align:center;
+    border: 1px solid grey;
+}
+
+
+li.showAnswerSwitch{
+    padding: 0;
+    position: absolute;
+    top: 13%;
+    margin-bottom: 15px;
+}
+
+.search-deck-area{
+    width: 70%;
+    height: 30%;
+    position: absolute;
+    top: 40%;
+    left: 2.5%;
+    bottom: 15%;
+    border-radius: 20px;
+    padding-right: 3px;
+    overflow: hidden;
+}
+
+.search-deck-area > input{
+    border-radius: 20px;
+    border: 1px solid #e7e7e7;
+    position: absolute;
+    width: 95%;
+    left: 0;
+    top:0;
+    height: 100%;
+    z-index: 1;
+    padding-left: 20px;
+}
+
+.search-deck-area > input:focus {
+    outline: none;
+}
+
+.search-deck-area > .glyphicon-search:hover, button.flashcards-side-nav-contents:hover, button.flashcards-bottom-nav-contents:hover {
+    opacity: .75;
+    cursor: pointer;
+}
+
+.search-deck-area > span.glyphicon-search {
+    position: absolute;
+    right: 0;
+    top:0;
+    padding-top: 5px;
+    padding-left: 5px;
+    width:40px;
+    background-color: orange;
+    border-color: grey;
+    border-left-color: none;
+    color: white;
+    height: 100%;
+    z-index: 2;
+}
+
+.showAnswerSwitch{
+    text-align: left;
+    padding: 2.5%;
+    font-size: .9em;
+    position: absolute;
+    top:0;
+}
+
+#deckSearchMessage{
+    position: absolute;
+    bottom: -10px; 
+    left: 0;
+}
+
+@media only screen and (min-width: 601px){
+
+    .flashcards-side-nav-contents{
+        width: 100%;
+    }
+
+    .flashcards-side-nav {
+        position:absolute;
+        margin-bottom: 0;
+        height: 85%;
+        width: 30%;
+        bottom: 0;
+        right: 0;
+        left: 70%;
+        overflow: scroll;
+        display: block;
+        text-decoration: none;
+        list-style: none;
+        background-color: #e6e6e6;
+        padding: 0;
+    }
+
+    .header-and-switch{
+        background-color: #e6e6e6;
+        width: 30%;
+        left: 70%;
+        height: 90px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-top: 0.5%;
+        text-align: center;
+        z-index: 2;
+        border-bottom: 1px solid #e6e6e6;
+        box-shadow: 0 5px 5px #cccccc;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .flashcards-side-nav-contents{
+        position: absolute; 
+        top: 15%;
+    }
+
+    .header-and-switch{
+        background-color: #e6e6e6;
+        width: 100%;
+        height: 90px;
+        position: absolute;
+        left: 0;
+        bottom: 2.5%;
+        padding-top: 0.5%;
+        text-align: center;
+        z-index: 2;
+        border-bottom: 1px solid #e6e6e6;
+        box-shadow: 0 5px 5px #cccccc;
+    }
+    .flashcards-side-nav {
+        position:absolute;
+        margin-bottom: 0;
+        height: 100px;
+        width: 100%;
+        bottom: -20%;
+        left: 0;
+        overflow: scroll;
+        display: inline-block;
+        text-decoration: none;
+        list-style: none;
+        background-color: #e6e6e6;
+        padding: 0;
+        white-space: nowrap;
+        z-index: 1; /* needed because the top area of the bottom nav will not be scrollable without it.*/
+    }
+
+    .flashcards-side-nav li{ 
+        display: inline-block;
+        width: 45%;
+        overflow-x: scroll;
+        margin: 0 2.5%;
+        vertical-align: top; 
+    }
+}

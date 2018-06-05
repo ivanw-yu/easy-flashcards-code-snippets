@@ -1,0 +1,142 @@
+.selected-flashcard {
+    background-color: "grey";
+}
+
+
+.left-button{
+    position: absolute;
+    top:30%;
+    left:12.5%;
+}
+
+.right-button{
+    position: absolute;
+    top: 30%;
+    right: 12.5%;
+}
+
+@media only screen and (min-width: 600px) {
+    .flashcard-view {
+        position: absolute;
+        height: 100%;
+        width: 70%;
+        left: 0;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+
+/* used when window resized to <=600 width*/
+
+@media only screen and (max-width: 600px) {
+    .flashcard-view{
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .flashcard-and-sidenav-div{
+        height: 700px;
+    }
+
+    .deck-page-header{
+        /* height: 150px; */
+    }
+}
+
+/* height : 70% pertains to height of the body*/
+.flashcard-and-sidenav-area{
+    position: absolute;
+    left: 0;
+    height: 70%;
+    width: 100%;
+}
+
+.flashcard-and-sidenav-div{
+    height: 475px;
+    margin-top: 0;
+}
+
+.settings{
+    position: absolute;
+    box-sizing: border-box;
+    padding-top: 10px;
+    width: 20%;
+    left: 55%;
+    margin-left: 0;
+    padding-left: 2.5%;
+    border-left: 1px solid #e6e6e6;
+    font-size: 10.5px;
+    height: 80%;
+}
+
+
+.list-group-item{
+    position: relative;
+    width: 100%;
+
+}
+
+.table-label, .commands tr{
+    width: 80%;
+    font-size: 90%;
+    word-wrap: break-word;
+}
+
+.commands table{
+    padding: 0;
+}
+
+.commands{
+    position: absolute;
+    box-sizing: border-box;
+    padding-top: 10px;
+    left: 75%;
+    width: 25%;
+    height: 80%;
+    font-size: 10.5px;
+    padding-left: 2.5%;
+    border-left: 1px solid #e6e6e6;
+
+}
+
+.deck-info{
+    position: relative;
+    box-sizing: border-box;
+    padding: 15px;
+    height: 100%;
+    /* font-size: 1vw; */
+    width: 55%;
+    left: 0;
+    font-size: 11px;
+}
+
+#deckTitle{
+    font-size: 150%;
+}
+
+
+.settings th, .settings td {
+    text-align: left;
+}
+
+.command th, .command td{
+    padding: 50%;
+    text-align: left;
+}
+td > span {
+    padding-right: 40%;
+}
+
+.deck-page-header{
+    position: relative;
+    left:0;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    box-shadow: 0 5px 5px #cccccc;
+    margin-bottom: 20px;
+}

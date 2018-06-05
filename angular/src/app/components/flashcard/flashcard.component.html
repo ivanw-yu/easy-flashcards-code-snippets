@@ -1,0 +1,26 @@
+  <div id = "flashcard" *ngIf = "displayType" [ngSwitch] = "viewType" [ngClass] = '{"flashcard" : true, "editFlashcard" : viewType === "edit"}'>
+    <div id = "single" *ngSwitchCase = "'single'" style = "position: absolute; height: 100%; width: 100%;" [ngSwitch] = "displayType">
+      <button class = "btn btn-circle flip-button" (click) = "flipCard()" ><span  class = "glyphicon glyphicon-refresh"></span></button>
+      <p *ngSwitchCase = "'question'" class = "flashcard-content"> <u> Question </u> <br> {{this.flashcard.question}} </p>
+      <p *ngSwitchDefault class = "flashcard-content"> <u> Answer </u> <br> {{this.flashcard.answer}} </p>
+    </div>
+    <div *ngSwitchCase = "'double'" style = "position: absolute; height: 100%; width: 100%;">
+      <div class = "question-content"> <u> Question </u> <br> {{this.flashcard.question}} </div>
+      <div class = "answer-content"> <u> Answer </u> <br> {{this.flashcard.answer}} </div>
+    </div>
+    <div *ngSwitchCase = "'edit'" class = "edit" style = "position: absolute; height: 100%; width: 100%;">
+      <button *ngIf = "editMode" (click) = "cancel()" class = "btn btn-primary">Cancel</button>
+      <button *ngIf = "!editMode" (click) = "edit()" class = "btn btn-primary">Edit</button>
+        <div [ngSwitch] = "editMode" class = "edit-contents">
+          <form *ngSwitchCase = "true" (submit) = "saveFlashcard(questionVal.value, answerVal.value)" class = "edit-form"> 
+            <u> Question </u> <br> <textarea class = "edit-content-question" name = "question" [value] = "flashcard.question" #questionVal></textarea> <br>
+            <u> Answer </u> <br> <textarea class = "edit-content-answer" name = "answer" [value] = "flashcard.answer" #answerVal></textarea> <br>
+            <input type = "submit" class = "btn btn-primary" value = "Save">
+          </form>
+          <div class = "editFlashcardContents" *ngSwitchCase = "false">
+           <p class > <u> Question </u> <br> {{this.flashcard.question}} </p>
+           <p class > <u> Answer </u> <br> {{this.flashcard.answer}} </p>
+          </div>
+        </div>
+    </div>
+  </div>

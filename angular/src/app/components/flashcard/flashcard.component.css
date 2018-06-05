@@ -1,0 +1,101 @@
+.flashcard {
+    position: absolute;
+    width: 70%;
+    height: 60%;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 5px 5px #cccccc;
+    left: 15%;
+    top: 10%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.flip-button {
+    position: absolute;
+    width: 15%;
+    height: 12.5%;
+    text-align: center;
+    color: white;
+    right: 0;
+    border-top-right-radius: 0;
+}
+
+.flip-button:hover{
+    opacity: .75;
+}
+.glyphicon, .glyphicon-refresh, .flip-button > span {
+    position: absolute;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    right: 25%;
+}
+.flashcard-content {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top: 15%;
+    left: 0;
+    font-size: 120%;
+}
+
+.editFlashcard {
+    height : 60%;
+}
+
+.editFlashcardContents{
+
+    top : 0;
+}
+
+.edit-contents {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.edit-form{
+    position: absolute;
+    width: 40%;
+    left: 30%;
+}
+
+textarea.edit-content-question, textarea.edit-content-answer{
+    width: 100%;
+    text-align: center;
+}
+
+.question-content{
+    position: absolute;
+    height: 92.5%;
+    width: 45%;
+    top: 7.5%;
+    left: 5%;
+    word-wrap: break-word;
+    padding-right: 5%;
+    border-right: 1px solid #e6e6e6;
+}
+
+.answer-content{
+    position: absolute;
+    height: 92.5%;
+    width: 40%;
+    top: 7.5%;
+    right: 5%;
+    padding: 0;
+}
+
+#flashcard{
+    overflow: visible;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+.btn, .btn-primary, .btn:disabled, .btn-primary:disabled {
+    background-color: orange;
+    border: 1px solid orange;
+}
