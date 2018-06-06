@@ -5,7 +5,7 @@ Easy-Flashcards is a flashcard web application allowing users to search, view, c
 
 # Technologies Used
 - Languages: JavaScript, TypeScript, HTML, CSS
-- Web Tools and Frameworks: Angular, Node.js, Express, Bootstrap, Heroku
+- Web Tools and Frameworks: Angular, Node.js, Express, Bootstrap, jQuery, Heroku
 - Database: MongoDB
 
 # License
